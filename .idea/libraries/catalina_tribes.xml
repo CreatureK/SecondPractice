@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="catalina-tribes">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/catalina-tribes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

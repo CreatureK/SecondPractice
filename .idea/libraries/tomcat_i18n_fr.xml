@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="tomcat-i18n-fr">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/tomcat-i18n-fr.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

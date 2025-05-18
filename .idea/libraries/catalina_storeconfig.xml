@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="catalina-storeconfig">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/catalina-storeconfig.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

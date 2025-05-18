@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="jakartaee-migration-1.0.9-shaded">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/jakartaee-migration-1.0.9-shaded.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="catalina-ssi">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/catalina-ssi.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

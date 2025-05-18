@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="catalina-ha">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/catalina-ha.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
