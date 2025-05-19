@@ -5,10 +5,11 @@ import java.util.List;
 
 /**
  * DynContent类 - 用于向视图传递数据的POJO类
- * 包含用户名、所在学院、课程信息
+ * 包含用户名、学生姓名、所在学院、课程信息
  */
 public class DynContent {
   private String username; // 用户名
+  private String studentName; // 学生姓名
   private String college; // 所在学院
   private List<String> courseNames; // 课程名称列表
   private List<Double> scores; // 分数列表
@@ -46,6 +47,14 @@ public class DynContent {
 
   public void setUsername(String username) {
     this.username = username;
+  }
+
+  public String getStudentName() {
+    return studentName;
+  }
+
+  public void setStudentName(String studentName) {
+    this.studentName = studentName;
   }
 
   public String getCollege() {
@@ -97,6 +106,7 @@ public class DynContent {
   public String toString() {
     StringBuilder sb = new StringBuilder("DynContent{");
     sb.append("username='").append(username).append('\'');
+    sb.append(", studentName='").append(studentName).append('\'');
     sb.append(", college='").append(college).append('\'');
     sb.append(", courses=[");
     for (int i = 0; i < courseNames.size(); i++) {

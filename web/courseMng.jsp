@@ -99,6 +99,14 @@
           background-color: #d32f2f;
         }
 
+        .button.blue {
+          background-color: #2196F3;
+        }
+
+        .button.blue:hover {
+          background-color: #0b7dda;
+        }
+
         .no-data {
           text-align: center;
           padding: 20px;
@@ -120,26 +128,36 @@
           clip: rect(0, 0, 0, 0);
           border: 0;
         }
+
+        .logout {
+          margin-top: 20px;
+          text-align: center;
+        }
+
+        .logout a {
+          color: #666;
+          text-decoration: underline;
+        }
       </style>
     </head>
 
     <body>
       <div class="container">
         <h2>课程管理系统</h2>
-        // 获取请求属性中的DynContent对象
+<%--         获取请求属性中的DynContent对象--%>
         <%  DynContent dynContent=(DynContent)request.getAttribute("dynContent"); if (dynContent
           !=null) { %>
           <div class="info-panel">
             <div class="info-item">
-              <span class="info-label">用户名：</span>
+              <span class="info-label">学号：</span>
               <span>
                 <%= dynContent.getUsername() %>
               </span>
             </div>
             <div class="info-item">
-              <span class="info-label">所在学院：</span>
+              <span class="info-label">姓名：</span>
               <span>
-                <%= dynContent.getCollege() %>
+                <%= dynContent.getStudentName() !=null ? dynContent.getStudentName() : "" %>
               </span>
             </div>
           </div>
@@ -182,10 +200,14 @@
               <div class="button-container">
                 <button type="submit" name="action" value="withdraw" class="button red">退选</button>
                 <button type="submit" name="action" value="manage" class="button">课程管理</button>
+                <a href="<%=request.getContextPath()%>/course?action=electiveSubject" class="button blue">选修课程</a>
               </div>
             </form>
             <% } else { %>
               <div class="no-data">没有课程信息可显示</div>
+              <div class="button-container">
+                <a href="<%=request.getContextPath()%>/course?action=electiveSubject" class="button blue">选修课程</a>
+              </div>
               <% } %>
 
                 <div class="logout">

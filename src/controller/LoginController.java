@@ -3,6 +3,7 @@ package controller;
 import model.DynContent;
 import model.Login;
 import model.LoginStatus;
+import service.CourseService;
 import service.LoginService;
 
 import jakarta.servlet.ServletException;
@@ -22,6 +23,7 @@ public class LoginController extends HttpServlet {
 
   // 业务逻辑服务
   private LoginService loginService;
+  private CourseService courseService;
 
   /**
    * 初始化Servlet
@@ -30,6 +32,7 @@ public class LoginController extends HttpServlet {
   public void init() throws ServletException {
     super.init();
     loginService = new LoginService();
+    courseService = new CourseService();
   }
 
   /**
@@ -60,12 +63,29 @@ public class LoginController extends HttpServlet {
       // 3.调用LoginService进行验证
       LoginStatus loginStatus = loginService.validateLogin(login);
 
-      // 4.封装DynContent对象
-      DynContent dynContent = new DynContent(username, college);
-      dynContent.initializeFromLoginStatus(loginStatus);
+      // 如果验证失败（没有找到用户），则返回登录页面
+      if (loginStatus == null || loginStatus.getCourseCount() == 0) {
+        // 检查是否是通过数据库验证的
+        if (login.getCollege() == null || login.getDepartment() == null) {
+          request.setAttribute("errorMessage", "用户名或密码错误，请重新登录");
+          request.getRequestDispatcher("/login.jsp").forward(request, response);
+          return;
+        }
+      }
+
+      // 将用户ID保存到会话中，用于后续操作
+      HttpSession session = request.getSession();
+      session.setAttribute("userId", username);
+
+      // 4.从数据库获取用户的课程信息
+      DynContent dynContent = courseService.getUserCourseInfo(username);
+
+      // 如果没有获取到课程信息，创建一个空的DynContent对象
+      if (dynContent == null) {
+        dynContent = new DynContent(username, login.getCollege());
+      }
 
       // 5.将dynContent对象保存到会话中，以便在其他页面可以使用
-      HttpSession session = request.getSession();
       session.setAttribute("dynContent", dynContent);
 
       // 6.将dynContent对象设置为请求属性
